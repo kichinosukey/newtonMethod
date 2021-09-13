@@ -17,4 +17,15 @@ def test__newton():
     for i in range(iteration):
         diff = np.dot(np.linalg.inv(ddfx(X_new)), dfx(X_new))
         X_new = X_new + diff
+
+        rtol = 1e-05
+        if i == 0:
+            np.testing.assert_allclose(X_new, np.array([[0.666667], [0.333333]]), rtol=rtol)
+        elif i == 1:
+            np.testing.assert_allclose(X_new, np.array([[1.111111], [0.555556]]), rtol=rtol)
+        elif i == 2:
+            np.testing.assert_allclose(X_new, np.array([[1.407407], [0.703704]]), rtol=rtol)
+        elif i == 3:
+            np.testing.assert_allclose(X_new, np.array([[1.604938], [0.802469]]), rtol=rtol)
+
     np.testing.assert_allclose(X_new, np.array([[2], [1]]), rtol=1e-05)
